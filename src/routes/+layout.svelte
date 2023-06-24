@@ -5,6 +5,21 @@
 
 	import '../app.postcss';
 	import Navtrail from '../components/Navtrail.svelte';
+	import { supabaseClient } from '$lib/supabase';
+	import { invalidateAll } from '$app/navigation';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		const {
+			data: { subscription }
+		} = supabaseClient.auth.onAuthStateChange(() => {
+			invalidateAll();
+		});
+
+		return () => {
+			subscription.unsubscribe();
+		};
+	});
 </script>
 
 <AppShell>
