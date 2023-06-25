@@ -1,10 +1,16 @@
 <main>
 	<h1>Login</h1>
 	<form action="?/login" method="POST" class="auth-form">
-		<label for=""> Email </label>
-		<input type="text" name="email" />
-		<label for=""> Password </label>
-		<input type="password" name="password" />
-		<button type="submit" class="btn btn-primary">Login</button>
+		<div class="mb-6">
+			<label class="label">
+				<span>Email</span>
+				<input class="input" type="text" placeholder="Email" name="email" />
+			</label>
+			<label class="label">
+				<span>Password</span>
+				<input class="input" type="password" placeholder="Password" name="password" />
+			</label>
+			<button type="submit" class="btn btn-primary">Login</button>
+		</div>
 	</form>
 </main>

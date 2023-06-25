@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '@skeletonlabs/skeleton/themes/theme-hamlindigo.css';
+	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
 	import '@skeletonlabs/skeleton/styles/skeleton.css';
 	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
 
@@ -13,6 +13,7 @@
 		const {
 			data: { subscription }
 		} = supabaseClient.auth.onAuthStateChange(() => {
+			console.log('Auth state change detected');
 			invalidateAll();
 		});
 
