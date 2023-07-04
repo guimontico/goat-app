@@ -6,7 +6,10 @@
 
 	const signInWithProvider = async (provider: Provider) => {
 		const { data, error } = await supabaseClient.auth.signInWithOAuth({
-			provider: provider
+			provider: provider,
+			options: {
+				redirectTo: `${window.location.origin}/dashboard`
+			}
 		});
 	};
 
@@ -29,7 +32,6 @@
 </script>
 
 <main>
-	<h1>Register</h1>
 	<div>
 		<form action="?/register" method="POST" class="auth-form flex justify-center">
 			<div class="flex flex-col items-center w-1/5 text-center">

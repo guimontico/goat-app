@@ -7,7 +7,6 @@ const OAUTH_PROVIDERS = ["google", "discord", "github"]
 export const actions: Actions = {
 	register: async ({ request, locals, url }) => {
 		const provider = url.searchParams.get("provider") as Provider
-
 		if (provider) {
 			if (!OAUTH_PROVIDERS.includes(provider)) {
 				return fail(400, {
@@ -16,6 +15,10 @@ export const actions: Actions = {
 			}
 			const { data, error: err } = await locals.sb.auth.signInWithOAuth({
 				provider: provider,
+				options: {
+					skipBrowserRedirect: false,
+					redirectTo: `${window.location.origin}/dashboard`,
+				}
 			})
 
 			if (err) {
@@ -45,7 +48,6 @@ export const actions: Actions = {
 				error: "Server error. Please try again later on.",
 			})
 		}
-
-		throw redirect(303, "/")
+		throw redirect(303, "/dashboard")
 	},
 }
