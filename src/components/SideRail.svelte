@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
+	import 'iconify-icon';
 
 	let currentTile = 0;
 </script>
@@ -10,7 +11,7 @@
 	</svelte:fragment>
 	<!-- --- -->
 	<AppRailTile bind:group={currentTile} name="tile-1" value={0} title="tile-1">
-		<svelte:fragment slot="lead">(icon)</svelte:fragment>
+		<svelte:fragment slot="lead"><iconify-icon icon="mdi:home" /></svelte:fragment>
 		<span>Tile 1</span>
 	</AppRailTile>
 	<AppRailTile bind:group={currentTile} name="tile-2" value={1} title="tile-2">
