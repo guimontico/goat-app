@@ -41,6 +41,9 @@
 	"type": "module",
 	"dependencies": {
 		"@auth/core": "^0.8.4",
-		"@auth/sveltekit": "^0.3.3"
+		"@auth/sveltekit": "^0.3.3",
+		"@prisma/client": "^4.16.2",
+		"@supabase/auth-ui-shared": "^0.1.6",
+		"@supabase/auth-ui-svelte": "^0.2.2"
 	}
 }
