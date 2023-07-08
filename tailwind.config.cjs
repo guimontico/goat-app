@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+/** @type {import('tailwindcss').Config}*/
+const config = {
 	darkMode: 'media',
 	content: [
 		'./src/**/*.{html,js,svelte,ts}',
@@ -11,7 +12,10 @@ module.exports = {
 		extend: {}
 	},
 	plugins: [
+		require('flowbite/plugin'),
 		require('@tailwindcss/forms'),
 		...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')()
 	]
 };
+
+module.exports = config;
