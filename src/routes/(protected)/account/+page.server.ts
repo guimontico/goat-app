@@ -13,6 +13,8 @@ export const load = async ({ locals }) => {
     .eq('id', session.user.id)
     .single()
 
+    console.log(profile)
+
   return { session, profile }
 }
 
@@ -26,7 +28,7 @@ export const actions = {
 
     const session = await locals.session
 
-    const { error } = await locals.sb.from('companies').upsert({
+    const { error } = await locals.sb.from('company').upsert({
       id: session?.user.id,
       full_name: fullName,
       username,

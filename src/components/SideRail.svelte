@@ -60,7 +60,12 @@
 						/>
 					</div>
 				</SidebarDropdownWrapper>
-				<SidebarItem label="Inventory" {spanClass}>
+				<SidebarItem
+					label="Inventory"
+					{spanClass}
+					href="/inventory"
+					active={activeUrl === '/inventory'}
+				>
 					<svelte:fragment slot="icon">
 						<iconify-icon icon="ic:round-inventory" />
 					</svelte:fragment>
@@ -71,7 +76,12 @@
 						>
 					</svelte:fragment>
 				</SidebarItem>
-				<SidebarItem label="Logistic" {spanClass}>
+				<SidebarItem
+					label="Logistic"
+					{spanClass}
+					href="/logistic"
+					active={activeUrl === '/logistic'}
+				>
 					<svelte:fragment slot="icon">
 						<iconify-icon icon="mingcute:truck-line" />
 					</svelte:fragment>
@@ -82,7 +92,7 @@
 						>
 					</svelte:fragment>
 				</SidebarItem>
-				<SidebarItem label="Calender">
+				<SidebarItem label="Calender" href="/calender" active={activeUrl === '/calender'}>
 					<svelte:fragment slot="icon">
 						<iconify-icon icon="uil:calender" />
 					</svelte:fragment>

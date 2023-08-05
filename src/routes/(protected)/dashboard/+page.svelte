@@ -1,25 +1,21 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-
 	export let data;
 
-	let { session, companies } = data;
-	$: ({ session, companies } = data);
-
-	console.log(companies);
+	let { session, company, error, userName } = data;
+	$: ({ session, company, error, userName } = data);
 
 	let companyForm: HTMLFormElement;
 	let loading = false;
-	let fullName: string = companies?.full_name ?? '';
-	let username: string = companies?.username ?? '';
-	let website: string = companies?.website ?? '';
-	let companyAvatarUrl: string = companies?.avatar_url ?? '';
+	let fullName: string = company?.slug ?? '';
+	let username: string = userName ?? '';
+	let description: string = company?.description ?? '';
+	let CNPJ: string = company?.CNPJ ?? '';
 	let userAvatarUrl: string = session?.user?.user_metadata?.avatar_url;
 </script>
 
 <div class="container mx-auto p-8 space-y-8">
 	<h1 class="h1">{fullName}</h1>
-	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+	<p>Olá {username}, o que deseja fazer em {description}, hoje?</p>
 	<section>
 		<a class="btn variant-filled-primary" href="https://kit.svelte.dev/">SvelteKit</a>
 		<a class="btn variant-filled-secondary" href="https://tailwindcss.com/">Tailwind</a>

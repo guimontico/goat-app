@@ -1,23 +1,19 @@
-import { fail, redirect } from '@sveltejs/kit'
+import { redirect } from '@sveltejs/kit'
 
 export const load = async ({ locals }) => {
-  const session = await locals.session
+  const session = locals.session
+  const userName = session?.user.user_metadata.full_name
 
   if (!session) {
     throw redirect(303, '/')
   }
 
-  // const { data: companies, error } = await locals.sb
-  // .from('companies')
-  // .select('id')
-
   
-  const { data: companies } = await locals.sb
-  .from('companies')
-  .select(`username, full_name, website, avatar_url`)
-  .eq('id', session.user.id)
+  const { data: company, error } = await locals.sb
+  .from('company')
+  .select(`id, slug, description, CNPJ, address, phone`)
+  .eq('created_by', session.user.id)
   .single()
-  console.log(companies)
 
-  return { session, companies }
+  return { session, company, error, userName }
 }
